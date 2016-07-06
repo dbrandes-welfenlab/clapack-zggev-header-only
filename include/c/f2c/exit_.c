@@ -8,12 +8,12 @@
  * with the added side effect of supplying rc as the program's exit code.
  */
 
-#include "../f2c.h"
+#include "../../f2c.h"
 #undef abs
 #undef min
 #undef max
 #ifndef KR_headers
-#include "stdlib.h"
+#include <stdlib.h>
 #ifdef __cplusplus
 extern "C" {
 #endif

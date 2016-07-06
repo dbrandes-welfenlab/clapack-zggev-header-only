@@ -1,11 +1,11 @@
-#include "../f2c.h"
-#include "../fio.h"
+#include "../../f2c.h"
+#include "../../f2c/fio.h"
 #include <string.h>
 #ifndef NON_POSIX_STDIO
 #ifdef MSDOS
-#include "io.h"
+#include <io.h>
 #else
-#include "unistd.h"	/* for access */
+#include <unistd.h>	/* for access */
 #endif
 #endif
 
@@ -21,7 +21,7 @@ extern integer f_clos();
 #undef abs
 #undef min
 #undef max
-#include "stdlib.h"
+#include <stdlib.h>
 #ifdef __cplusplus
 extern "C" {
 #endif

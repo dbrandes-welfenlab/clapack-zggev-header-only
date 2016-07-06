@@ -1,4 +1,4 @@
-/* daxpy.f -- translated by f2c (version 20061008).
+/* zcopy.f -- translated by f2c (version 20061008).
    You must link the resulting object file with libf2c:
 	on Microsoft Windows system, link with libf2c.lib;
 	on Linux or Unix systems, link with .../path/to/libf2c.a -lm
@@ -10,17 +10,17 @@
 		http://www.netlib.org/f2c/libf2c.zip
 */
 
-#include "../f2c.h"
-#include "../blaswrap.h"
+#include "../../f2c.h"
+#include "../../blaswrap.h"
 
-/* Subroutine */ int daxpy_(integer *n, doublereal *da, doublereal *dx, 
-	integer *incx, doublereal *dy, integer *incy)
+/* Subroutine */ int zcopy_(integer *n, doublecomplex *zx, integer *incx, 
+	doublecomplex *zy, integer *incy)
 {
     /* System generated locals */
-    integer i__1;
+    integer i__1, i__2, i__3;
 
     /* Local variables */
-    integer i__, m, ix, iy, mp1;
+    integer i__, ix, iy;
 
 /*     .. Scalar Arguments .. */
 /*     .. */
@@ -30,25 +30,19 @@
 /*  Purpose */
 /*  ======= */
 
-/*     constant times a vector plus a vector. */
-/*     uses unrolled loops for increments equal to one. */
-/*     jack dongarra, linpack, 3/11/78. */
+/*     copies a vector, x, to a vector, y. */
+/*     jack dongarra, linpack, 4/11/78. */
 /*     modified 12/3/93, array(1) declarations changed to array(*) */
 
 
 /*     .. Local Scalars .. */
 /*     .. */
-/*     .. Intrinsic Functions .. */
-/*     .. */
     /* Parameter adjustments */
-    --dy;
-    --dx;
+    --zy;
+    --zx;
 
     /* Function Body */
     if (*n <= 0) {
-	return 0;
-    }
-    if (*da == 0.) {
 	return 0;
     }
     if (*incx == 1 && *incy == 1) {
@@ -68,7 +62,9 @@
     }
     i__1 = *n;
     for (i__ = 1; i__ <= i__1; ++i__) {
-	dy[iy] += *da * dx[ix];
+	i__2 = iy;
+	i__3 = ix;
+	zy[i__2].r = zx[i__3].r, zy[i__2].i = zx[i__3].i;
 	ix += *incx;
 	iy += *incy;
 /* L10: */
@@ -77,31 +73,13 @@
 
 /*        code for both increments equal to 1 */
 
-
-/*        clean-up loop */
-
 L20:
-    m = *n % 4;
-    if (m == 0) {
-	goto L40;
-    }
-    i__1 = m;
+    i__1 = *n;
     for (i__ = 1; i__ <= i__1; ++i__) {
-	dy[i__] += *da * dx[i__];
+	i__2 = i__;
+	i__3 = i__;
+	zy[i__2].r = zx[i__3].r, zy[i__2].i = zx[i__3].i;
 /* L30: */
     }
-    if (*n < 4) {
-	return 0;
-    }
-L40:
-    mp1 = m + 1;
-    i__1 = *n;
-    for (i__ = mp1; i__ <= i__1; i__ += 4) {
-	dy[i__] += *da * dx[i__];
-	dy[i__ + 1] += *da * dx[i__ + 1];
-	dy[i__ + 2] += *da * dx[i__ + 2];
-	dy[i__ + 3] += *da * dx[i__ + 3];
-/* L50: */
-    }
     return 0;
-} /* daxpy_ */
+} /* zcopy_ */

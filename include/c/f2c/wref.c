@@ -1,16 +1,16 @@
-#include "../f2c.h"
-#include "../fio.h"
+#include "../../f2c.h"
+#include "../../f2c/fio.h"
 
 #ifndef KR_headers
 #undef abs
 #undef min
 #undef max
-#include "stdlib.h"
-#include "string.h"
+#include <stdlib.h>
+#include <string.h>
 #endif
 
-#include "../fmt.h"
-#include "../fp.h"
+#include "../../f2c/fmt.h"
+#include "../../f2c/fp.h"
 #ifndef VAX
 #include <ctype.h>
 #ifdef __cplusplus

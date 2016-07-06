@@ -1,5 +1,5 @@
-#include "../f2c.h"
-#include "../fio.h"
+#include "../../f2c.h"
+#include "../../f2c/fio.h"
 
 /* Compile with -DF8X_NML_ELIDE_QUOTES to permit eliding quotation */
 /* marks in namelist input a la the Fortran 8X Draft published in  */
@@ -21,10 +21,10 @@ int (*f__lioproc)(), (*l_getc)(), (*l_ungetc)();
 #include <stdlib.h>
 #endif
 
-#include "../fmt.h"
-#include "../lio.h"
+#include "../../f2c/fmt.h"
+#include "../../f2c/lio.h"
 #include <ctype.h>
-#include "../fp.h"
+#include "../../f2c/fp.h"
 #ifdef __cplusplus
 extern "C" {
 #endif

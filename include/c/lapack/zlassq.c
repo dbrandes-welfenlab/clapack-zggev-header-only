@@ -10,8 +10,8 @@
 		http://www.netlib.org/f2c/libf2c.zip
 */
 
-#include "../f2c.h"
-#include "../blaswrap.h"
+#include "../../f2c.h"
+#include "../../blaswrap.h"
 
 /* Subroutine */ int zlassq_(integer *n, doublecomplex *x, integer *incx, 
 	doublereal *scale, doublereal *sumsq)

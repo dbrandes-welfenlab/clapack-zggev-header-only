@@ -10,8 +10,8 @@
 		http://www.netlib.org/f2c/libf2c.zip
 */
 
-#include "../f2c.h"
-#include "../blaswrap.h"
+#include "../../f2c.h"
+#include "../../blaswrap.h"
 
 /* Subroutine */ int zlacpy_(char *uplo, integer *m, integer *n, 
 	doublecomplex *a, integer *lda, doublecomplex *b, integer *ldb)

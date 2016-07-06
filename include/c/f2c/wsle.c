@@ -1,7 +1,7 @@
-#include "../f2c.h"
-#include "../fio.h"
-#include "../fmt.h"
-#include "../lio.h"
+#include "../../f2c.h"
+#include "../../f2c/fio.h"
+#include "../../f2c/fmt.h"
+#include "../../f2c/lio.h"
 #include <string.h>
 #ifdef __cplusplus
 extern "C" {

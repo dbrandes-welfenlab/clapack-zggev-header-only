@@ -59,8 +59,8 @@
 #ifndef USE_LARGEFILE
 #define _INCLUDE_POSIX_SOURCE	/* for HP-UX */
 #define _INCLUDE_XOPEN_SOURCE	/* for HP-UX */
-#include "sys/types.h"
-#include "sys/stat.h"
+#include <sys/types.h>
+#include <sys/stat.h>
 #endif
 #endif
 

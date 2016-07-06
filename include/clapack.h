@@ -7,9 +7,17 @@
 extern "C" {	
 #endif		
 
+#define integer_fortran integer
+#define doublereal_fortran doublereal
+#define doublecomplex_fortran doublecomplex
+#ifdef USE_F2C
+#include "f2c.h"
+
+#else
 typedef int integer_fortran;
 typedef double doublereal_fortran;
 typedef struct { doublereal_fortran r, i; } doublecomplex_fortran;
+#endif
 
 /* Subroutine */ int zggev_(char *jobvl, char *jobvr, integer_fortran *n,
         doublecomplex_fortran *a, integer_fortran *lda, doublecomplex_fortran *b, integer_fortran *ldb,

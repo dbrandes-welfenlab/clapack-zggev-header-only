@@ -1,19 +1,19 @@
-#include "../f2c.h"
-#include "../fio.h"
+#include "../../f2c.h"
+#include "../../f2c/fio.h"
 #ifdef KR_headers
 integer f_clos(a) cllist *a;
 #else
 #undef abs
 #undef min
 #undef max
-#include "stdlib.h"
+#include <stdlib.h>
 #ifdef NON_UNIX_STDIO
 #ifndef unlink
 #define unlink remove
 #endif
 #else
 #ifdef MSDOS
-#include "io.h"
+#include <io.h>
 #else
 #ifdef __cplusplus
 extern "C" int unlink(const char*);

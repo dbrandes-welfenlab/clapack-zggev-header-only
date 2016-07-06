@@ -1,4 +1,4 @@
-/* zdscal.f -- translated by f2c (version 20061008).
+/* dscal.f -- translated by f2c (version 20061008).
    You must link the resulting object file with libf2c:
 	on Microsoft Windows system, link with libf2c.lib;
 	on Linux or Unix systems, link with .../path/to/libf2c.a -lm
@@ -10,18 +10,17 @@
 		http://www.netlib.org/f2c/libf2c.zip
 */
 
-#include "../f2c.h"
-#include "../blaswrap.h"
+#include "../../f2c.h"
+#include "../../blaswrap.h"
 
-/* Subroutine */ int zdscal_(integer *n, doublereal *da, doublecomplex *zx, 
+/* Subroutine */ int dscal_(integer *n, doublereal *da, doublereal *dx, 
 	integer *incx)
 {
     /* System generated locals */
-    integer i__1, i__2, i__3;
-    doublecomplex z__1, z__2;
+    integer i__1, i__2;
 
     /* Local variables */
-    integer i__, ix;
+    integer i__, m, mp1, nincx;
 
 /*     .. Scalar Arguments .. */
 /*     .. */
@@ -30,9 +29,10 @@
 
 /*  Purpose */
 /*  ======= */
-
+/* * */
 /*     scales a vector by a constant. */
-/*     jack dongarra, 3/11/78. */
+/*     uses unrolled loops for increment equal to one. */
+/*     jack dongarra, linpack, 3/11/78. */
 /*     modified 3/93 to return if incx .le. 0. */
 /*     modified 12/3/93, array(1) declarations changed to array(*) */
 
@@ -42,7 +42,7 @@
 /*     .. Intrinsic Functions .. */
 /*     .. */
     /* Parameter adjustments */
-    --zx;
+    --dx;
 
     /* Function Body */
     if (*n <= 0 || *incx <= 0) {
@@ -54,32 +54,43 @@
 
 /*        code for increment not equal to 1 */
 
-    ix = 1;
-    i__1 = *n;
-    for (i__ = 1; i__ <= i__1; ++i__) {
-	i__2 = ix;
-	z__2.r = *da, z__2.i = 0.;
-	i__3 = ix;
-	z__1.r = z__2.r * zx[i__3].r - z__2.i * zx[i__3].i, z__1.i = z__2.r * 
-		zx[i__3].i + z__2.i * zx[i__3].r;
-	zx[i__2].r = z__1.r, zx[i__2].i = z__1.i;
-	ix += *incx;
+    nincx = *n * *incx;
+    i__1 = nincx;
+    i__2 = *incx;
+    for (i__ = 1; i__2 < 0 ? i__ >= i__1 : i__ <= i__1; i__ += i__2) {
+	dx[i__] = *da * dx[i__];
 /* L10: */
     }
     return 0;
 
 /*        code for increment equal to 1 */
 
+
+/*        clean-up loop */
+
 L20:
-    i__1 = *n;
-    for (i__ = 1; i__ <= i__1; ++i__) {
-	i__2 = i__;
-	z__2.r = *da, z__2.i = 0.;
-	i__3 = i__;
-	z__1.r = z__2.r * zx[i__3].r - z__2.i * zx[i__3].i, z__1.i = z__2.r * 
-		zx[i__3].i + z__2.i * zx[i__3].r;
-	zx[i__2].r = z__1.r, zx[i__2].i = z__1.i;
+    m = *n % 5;
+    if (m == 0) {
+	goto L40;
+    }
+    i__2 = m;
+    for (i__ = 1; i__ <= i__2; ++i__) {
+	dx[i__] = *da * dx[i__];
 /* L30: */
     }
+    if (*n < 5) {
+	return 0;
+    }
+L40:
+    mp1 = m + 1;
+    i__2 = *n;
+    for (i__ = mp1; i__ <= i__2; i__ += 5) {
+	dx[i__] = *da * dx[i__];
+	dx[i__ + 1] = *da * dx[i__ + 1];
+	dx[i__ + 2] = *da * dx[i__ + 2];
+	dx[i__ + 3] = *da * dx[i__ + 3];
+	dx[i__ + 4] = *da * dx[i__ + 4];
+/* L50: */
+    }
     return 0;
-} /* zdscal_ */
+} /* dscal_ */

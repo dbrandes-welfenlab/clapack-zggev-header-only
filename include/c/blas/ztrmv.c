@@ -10,8 +10,8 @@
 		http://www.netlib.org/f2c/libf2c.zip
 */
 
-#include "../f2c.h"
-#include "../blaswrap.h"
+#include "../../f2c.h"
+#include "../../blaswrap.h"
 
 /* Subroutine */ int ztrmv_(char *uplo, char *trans, char *diag, integer *n, 
 	doublecomplex *a, integer *lda, doublecomplex *x, integer *incx)

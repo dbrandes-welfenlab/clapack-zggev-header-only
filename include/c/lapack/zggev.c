@@ -10,17 +10,18 @@
 		http://www.netlib.org/f2c/libf2c.zip
 */
 
-#include "../f2c.h"
-#include "../blaswrap.h"
+#include "../../f2c.h"
+#include "../../blaswrap.h"
+#include "../../clapack.h"
 #include <math.h>
 
 /* Table of constant values */
 
-/* Subroutine */ int zggev_(char *jobvl, char *jobvr, integer *n, 
-	doublecomplex *a, integer *lda, doublecomplex *b, integer *ldb, 
-	doublecomplex *alpha, doublecomplex *beta, doublecomplex *vl, integer 
-	*ldvl, doublecomplex *vr, integer *ldvr, doublecomplex *work, integer 
-	*lwork, doublereal *rwork, integer *info)
+/* Subroutine */ int zggev_(char *jobvl, char *jobvr, integer_fortran *n,
+        doublecomplex_fortran *a, integer_fortran *lda, doublecomplex_fortran *b, integer_fortran *ldb,
+        doublecomplex_fortran *alpha, doublecomplex_fortran *beta, doublecomplex_fortran *vl, integer_fortran
+        *ldvl, doublecomplex_fortran *vr, integer_fortran *ldvr, doublecomplex_fortran *work, integer_fortran
+        *lwork, doublereal_fortran *rwork, integer_fortran *info)
 {
     /* System generated locals */
     integer a_dim1, a_offset, b_dim1, b_offset, vl_dim1, vl_offset, vr_dim1, 

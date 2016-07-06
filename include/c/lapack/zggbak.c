@@ -10,8 +10,8 @@
 		http://www.netlib.org/f2c/libf2c.zip
 */
 
-#include "../f2c.h"
-#include "../blaswrap.h"
+#include "../../f2c.h"
+#include "../../blaswrap.h"
 
 /* Subroutine */ int zggbak_(char *job, char *side, integer *n, integer *ilo, 
 	integer *ihi, doublereal *lscale, doublereal *rscale, integer *m, 

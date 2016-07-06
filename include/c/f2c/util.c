@@ -1,6 +1,6 @@
-#include "../sysdep1.h"	/* here to get stat64 on some badly designed Linux systems */
-#include "../f2c.h"
-#include "../fio.h"
+#include "../../f2c/sysdep1.h"	/* here to get stat64 on some badly designed Linux systems */
+#include "../../f2c.h"
+#include "../../f2c/fio.h"
 #ifdef __cplusplus
 extern "C" {
 #endif

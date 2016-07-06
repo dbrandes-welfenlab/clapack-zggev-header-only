@@ -3,7 +3,7 @@
  * to the Fortran 77 Standard, but in accordance with Fortran 90).
  */
 
-#include "../f2c.h"
+#include "../../f2c.h"
 #ifndef NO_OVERWRITE
 #include <stdio.h>
 #undef abs
@@ -21,7 +21,7 @@ extern
 #endif
 	char *F77_aloc(ftnlen, const char*);
 #endif
-#include "string.h"
+#include <string.h>
 #endif /* NO_OVERWRITE */
 
 #ifdef __cplusplus

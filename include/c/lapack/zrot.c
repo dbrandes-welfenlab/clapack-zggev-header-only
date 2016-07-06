@@ -10,8 +10,8 @@
 		http://www.netlib.org/f2c/libf2c.zip
 */
 
-#include "../f2c.h"
-#include "../blaswrap.h"
+#include "../../f2c.h"
+#include "../../blaswrap.h"
 
 /* Subroutine */ int zrot_(integer *n, doublecomplex *cx, integer *incx, 
 	doublecomplex *cy, integer *incy, doublereal *c__, doublecomplex *s)

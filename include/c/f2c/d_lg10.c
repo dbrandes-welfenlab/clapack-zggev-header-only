@@ -1,4 +1,4 @@
-#include "f2c.h"
+#include "../../f2c.h"
 
 #define log10e 0.43429448190325182765
 
@@ -7,7 +7,7 @@ double log();
 double d_lg10(x) doublereal *x;
 #else
 #undef abs
-#include "math.h"
+#include <math.h>
 #ifdef __cplusplus
 extern "C" {
 #endif

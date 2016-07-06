@@ -1,7 +1,7 @@
 /* read sequential formatted external */
-#include "../f2c.h"
-#include "../fio.h"
-#include "../fmt.h"
+#include "../../f2c.h"
+#include "../../f2c/fio.h"
+#include "../../f2c/fmt.h"
 #ifdef __cplusplus
 extern "C" {
 #endif

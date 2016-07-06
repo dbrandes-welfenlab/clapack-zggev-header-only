@@ -1,11 +1,11 @@
-#include "f2c.h"
+#include "../../f2c.h"
 
 #ifdef KR_headers
 double sqrt(), f__cabs();
 VOID z_sqrt(r, z) doublecomplex *r, *z;
 #else
 #undef abs
-#include "math.h"
+#include <math.h>
 #ifdef __cplusplus
 extern "C" {
 #endif

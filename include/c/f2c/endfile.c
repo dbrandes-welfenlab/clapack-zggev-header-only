@@ -1,5 +1,5 @@
-#include "../f2c.h"
-#include "../fio.h"
+#include "../../f2c.h"
+#include "../../f2c/fio.h"
 
 /* Compile this with -DNO_TRUNCATE if unistd.h does not exist or */
 /* if it does not define int truncate(const char *name, off_t). */
@@ -10,7 +10,7 @@
 #endif
 
 #ifndef NO_TRUNCATE
-#include "unistd.h"
+#include <unistd.h>
 #endif
 
 #ifdef KR_headers
@@ -20,8 +20,8 @@ extern FILE *tmpfile();
 #undef abs
 #undef min
 #undef max
-#include "stdlib.h"
-#include "string.h"
+#include <stdlib.h>
+#include <string.h>
 #ifdef __cplusplus
 extern "C" {
 #endif

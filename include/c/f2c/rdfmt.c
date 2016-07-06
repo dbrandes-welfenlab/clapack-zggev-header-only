@@ -1,5 +1,5 @@
-#include "../f2c.h"
-#include "../fio.h"
+#include "../../f2c.h"
+#include "../../f2c/fio.h"
 
 #ifdef KR_headers
 extern double atof();
@@ -9,11 +9,11 @@ extern double atof();
 #undef abs
 #undef min
 #undef max
-#include "stdlib.h"
+#include <stdlib.h>
 #endif
 
-#include "../fmt.h"
-#include "../fp.h"
+#include "../../f2c/fmt.h"
+#include "../../f2c/fp.h"
 #include <ctype.h>
 #ifdef __cplusplus
 extern "C" {

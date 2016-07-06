@@ -1,4 +1,3 @@
-#define USE_F2C
 #include "../include/zggeveigen.h"
 
 #include <tuple>
@@ -33,4 +32,3 @@ int main(int argc, char*argv[])
     return 0;
 }
 
-#include "../include/fullcinclude.h"

@@ -8,7 +8,7 @@
 #include <errno.h>
 #ifndef NULL
 /* ANSI C */
-#include "stddef.h"
+#include <stddef.h>
 #endif
 
 #ifndef SEEK_SET

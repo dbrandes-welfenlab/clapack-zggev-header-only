@@ -1,6 +1,6 @@
 /* sequential formatted external common routines*/
-#include "../f2c.h"
-#include "../fio.h"
+#include "../../f2c.h"
+#include "../../f2c/fio.h"
 #ifdef __cplusplus
 extern "C" {
 #endif

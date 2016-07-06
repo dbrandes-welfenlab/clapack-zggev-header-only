@@ -10,7 +10,7 @@
 #ifdef KR_headers
 void sig_die(s, kill) char *s; int kill;
 #else
-#include "stdlib.h"
+#include <stdlib.h>
 #ifdef __cplusplus
 extern "C" {
 #endif

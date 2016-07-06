@@ -1,4 +1,4 @@
-/* zscal.f -- translated by f2c (version 20061008).
+/* izamax.f -- translated by f2c (version 20061008).
    You must link the resulting object file with libf2c:
 	on Microsoft Windows system, link with libf2c.lib;
 	on Linux or Unix systems, link with .../path/to/libf2c.a -lm
@@ -10,18 +10,18 @@
 		http://www.netlib.org/f2c/libf2c.zip
 */
 
-#include "../f2c.h"
-#include "../blaswrap.h"
+#include "../../f2c.h"
+#include "../../blaswrap.h"
 
-/* Subroutine */ int zscal_(integer *n, doublecomplex *za, doublecomplex *zx, 
-	integer *incx)
+integer izamax_(integer *n, doublecomplex *zx, integer *incx)
 {
     /* System generated locals */
-    integer i__1, i__2, i__3;
-    doublecomplex z__1;
+    integer ret_val, i__1;
 
     /* Local variables */
     integer i__, ix;
+    doublereal smax;
+    extern doublereal dcabs1_(doublecomplex *);
 
 /*     .. Scalar Arguments .. */
 /*     .. */
@@ -31,20 +31,27 @@
 /*  Purpose */
 /*  ======= */
 
-/*     scales a vector by a constant. */
-/*     jack dongarra, 3/11/78. */
+/*     finds the index of element having max. absolute value. */
+/*     jack dongarra, 1/15/85. */
 /*     modified 3/93 to return if incx .le. 0. */
 /*     modified 12/3/93, array(1) declarations changed to array(*) */
 
 
 /*     .. Local Scalars .. */
 /*     .. */
+/*     .. External Functions .. */
+/*     .. */
     /* Parameter adjustments */
     --zx;
 
     /* Function Body */
-    if (*n <= 0 || *incx <= 0) {
-	return 0;
+    ret_val = 0;
+    if (*n < 1 || *incx <= 0) {
+	return ret_val;
+    }
+    ret_val = 1;
+    if (*n == 1) {
+	return ret_val;
     }
     if (*incx == 1) {
 	goto L20;
@@ -53,29 +60,34 @@
 /*        code for increment not equal to 1 */
 
     ix = 1;
+    smax = dcabs1_(&zx[1]);
+    ix += *incx;
     i__1 = *n;
-    for (i__ = 1; i__ <= i__1; ++i__) {
-	i__2 = ix;
-	i__3 = ix;
-	z__1.r = za->r * zx[i__3].r - za->i * zx[i__3].i, z__1.i = za->r * zx[
-		i__3].i + za->i * zx[i__3].r;
-	zx[i__2].r = z__1.r, zx[i__2].i = z__1.i;
+    for (i__ = 2; i__ <= i__1; ++i__) {
+	if (dcabs1_(&zx[ix]) <= smax) {
+	    goto L5;
+	}
+	ret_val = i__;
+	smax = dcabs1_(&zx[ix]);
+L5:
 	ix += *incx;
 /* L10: */
     }
-    return 0;
+    return ret_val;
 
 /*        code for increment equal to 1 */
 
 L20:
+    smax = dcabs1_(&zx[1]);
     i__1 = *n;
-    for (i__ = 1; i__ <= i__1; ++i__) {
-	i__2 = i__;
-	i__3 = i__;
-	z__1.r = za->r * zx[i__3].r - za->i * zx[i__3].i, z__1.i = za->r * zx[
-		i__3].i + za->i * zx[i__3].r;
-	zx[i__2].r = z__1.r, zx[i__2].i = z__1.i;
-/* L30: */
+    for (i__ = 2; i__ <= i__1; ++i__) {
+	if (dcabs1_(&zx[i__]) <= smax) {
+	    goto L30;
+	}
+	ret_val = i__;
+	smax = dcabs1_(&zx[i__]);
+L30:
+	;
     }
-    return 0;
-} /* zscal_ */
+    return ret_val;
+} /* izamax_ */
