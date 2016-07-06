@@ -8,8 +8,8 @@ extern "C" {
 #endif		
 
 typedef int integer_fortran;
-typedef struct { doublereal r, i; } doublecomplex_fortran;
 typedef double doublereal_fortran;
+typedef struct { doublereal_fortran r, i; } doublecomplex_fortran;
 
 /* Subroutine */ int zggev_(char *jobvl, char *jobvr, integer_fortran *n,
         doublecomplex_fortran *a, integer_fortran *lda, doublecomplex_fortran *b, integer_fortran *ldb,

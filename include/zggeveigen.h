@@ -47,22 +47,22 @@ inline int solveZGGEV(const Eigen::MatrixXcd& A, const Eigen::MatrixXcd& B, Eige
     //lapack needs column-major and eigen stores default in column-major, so no changes should be needed.
     //storage order for complex should be the same:
     //http://stackoverflow.com/questions/5020076/passing-a-c-complex-array-to-c
-    static_assert((sizeof(compdouble)) == sizeof(doublecomplex),"Size of std::complex<double> does not equal size of doublecomplex!");
+    static_assert((sizeof(compdouble)) == sizeof(doublecomplex_fortran),"Size of std::complex<double> does not equal size of doublecomplex!");
 
-    doublecomplex* Atmp = new doublecomplex[n * n];
+    doublecomplex_fortran* Atmp = new doublecomplex_fortran[n * n];
     memcpy(Atmp,A.data(),sizeof(std::complex<double>) * n * n);
 
-    doublecomplex* Btmp = new doublecomplex[n * n];
+    doublecomplex_fortran* Btmp = new doublecomplex_fortran[n * n];
     memcpy(Btmp,B.data(),sizeof(std::complex<double>) * n * n);
 
-    doublecomplex* alpha = new doublecomplex[n];
-    doublecomplex* beta = new doublecomplex[n];
+    doublecomplex_fortran* alpha = new doublecomplex_fortran[n];
+    doublecomplex_fortran* beta = new doublecomplex_fortran[n];
 
-    doublecomplex* dummy = 0;
+    doublecomplex_fortran* dummy = 0;
     int idummy = 1;
 
     int lwork = -1;
-    doublecomplex dummywork;
+    doublecomplex_fortran dummywork;
 
     int lrwork = 8 * n;
     double* rwork = new double[lrwork];
@@ -79,7 +79,7 @@ inline int solveZGGEV(const Eigen::MatrixXcd& A, const Eigen::MatrixXcd& B, Eige
         return info;
     }
     lwork = dummywork.r;
-    doublecomplex* work = new doublecomplex[lwork];
+    doublecomplex_fortran* work = new doublecomplex_fortran[lwork];
     zggev_(no,no,&n,Atmp,&n,Btmp,&n,alpha,beta,dummy,&idummy,dummy,&idummy,work,&lwork,rwork,&info);
     if (info != 0)
     {

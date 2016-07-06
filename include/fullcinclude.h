@@ -1,5 +1,13 @@
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wparentheses"
+#pragma GCC diagnostic ignored "-Wmaybe-uninitialized"
+#pragma GCC diagnostic ignored "-Wsign-compare"
+#pragma GCC diagnostic ignored "-Wunused-but-set-variable"
+#pragma GCC diagnostic ignored "-Wunused-parameter"
 extern "C"
 {
+#include "f2c.h"
+
 static integer c__2 = 2;
 static integer c__1 = 1;
 static integer c__0 = 0;
@@ -102,3 +110,4 @@ static doublecomplex c_b5 = {1.,0.};
 #include "c/rsfe.c"
 #include "c/exit_.c"
 }
+#pragma GCC diagnostic pop
