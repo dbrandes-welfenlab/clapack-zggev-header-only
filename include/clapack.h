@@ -3,17 +3,20 @@
 #ifndef __CLAPACK_H
 #define __CLAPACK_H
 
-#include "../f2c.h"
-
 #ifdef __cplusplus 	
 extern "C" {	
 #endif		
 
-/* Subroutine */ int zggev_(char *jobvl, char *jobvr, integer *n, 
-	doublecomplex *a, integer *lda, doublecomplex *b, integer *ldb, 
-	doublecomplex *alpha, doublecomplex *beta, doublecomplex *vl, integer 
-	*ldvl, doublecomplex *vr, integer *ldvr, doublecomplex *work, integer 
-	*lwork, doublereal *rwork, integer *info);
+typedef int integer_fortran;
+typedef struct { doublereal r, i; } doublecomplex_fortran;
+typedef double doublereal_fortran;
+
+/* Subroutine */ int zggev_(char *jobvl, char *jobvr, integer_fortran *n,
+        doublecomplex_fortran *a, integer_fortran *lda, doublecomplex_fortran *b, integer_fortran *ldb,
+        doublecomplex_fortran *alpha, doublecomplex_fortran *beta, doublecomplex_fortran *vl, integer_fortran
+        *ldvl, doublecomplex_fortran *vr, integer_fortran *ldvr, doublecomplex_fortran *work, integer_fortran
+        *lwork, doublereal_fortran *rwork, integer_fortran *info);
+
 
 
 #ifdef __cplusplus
