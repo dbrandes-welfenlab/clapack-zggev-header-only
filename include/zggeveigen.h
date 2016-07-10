@@ -76,6 +76,7 @@ inline int solveZGGEV(const Eigen::MatrixXcd& A, const Eigen::MatrixXcd& B, Eige
         delete[] Btmp;
         delete[] alpha;
         delete[] beta;
+        delete[] rwork;
         return info;
     }
     lwork = dummywork.r;
@@ -87,6 +88,7 @@ inline int solveZGGEV(const Eigen::MatrixXcd& A, const Eigen::MatrixXcd& B, Eige
         delete[] Btmp;
         delete[] alpha;
         delete[] beta;
+        delete[] rwork;
         delete[] work;
         return info;
     }
@@ -119,6 +121,7 @@ inline int solveZGGEV(const Eigen::MatrixXcd& A, const Eigen::MatrixXcd& B, Eige
     delete[] Btmp;
     delete[] alpha;
     delete[] beta;
+    delete[] rwork;
     delete[] work;
     return info;
 }
